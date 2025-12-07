@@ -26,7 +26,7 @@ body {
   line-height: 1.45;
 }
 
-/* Hide scrollbar */
+/* Hide scrollbar globally */
 body::-webkit-scrollbar { display: none; }
 body { -ms-overflow-style: none; scrollbar-width: none; }
 
@@ -34,70 +34,87 @@ body { -ms-overflow-style: none; scrollbar-width: none; }
 .container { max-width: 1100px; margin: 0 auto; padding: 48px 24px; transition: box-shadow 0.3s ease; }
 
 /* =========================
-   Header
+   Header (burger version)
    ========================= */
 .header {
-  backdrop-filter: blur(6px);
-  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+  backdrop-filter: blur(8px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.7));
   position: sticky;
   top: 0;
   z-index: 50;
   border-bottom: 1px solid rgba(140,122,101,0.06);
 }
-.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 0; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; }
 
-/* Логотип */
+/* Logo */
 .logo { display: flex; align-items: center; gap: 12px; }
 .logo-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
-  background: linear-gradient(180deg,#C6B9A4,#E8DCC8);
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; color: #fff;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #C6B9A4, #E8DCC8);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  color: #fff;
+  font-size: 24px;
 }
-.logo-text .logo-name { font-weight: 700; }
+.logo-text .logo-name { font-weight: 700; font-size: 20px; }
 .logo-text .logo-slogan { font-size: 12px; color: var(--muted); }
 
-/* Навигация для ПК */
-.nav { display: flex; gap: 18px; align-items: center; }
-.nav a { text-decoration: none; color: var(--text); }
-.btn-nav { padding: 8px 14px; }
-
-/* =========================
-   Mobile burger menu
-   ========================= */
+/* Burger menu */
 .burger {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 24px;
-  height: 18px;
+  width: 28px;
+  height: 20px;
   cursor: pointer;
+  z-index: 110;
 }
 .burger span {
   display: block;
   height: 3px;
   background: var(--text);
   border-radius: 2px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
+
+/* Mobile nav — стильная панель */
 .mobile-nav {
   position: fixed;
   top: 0;
-  left: -250px;
-  width: 250px;
+  left: -280px;
+  width: 280px;
   height: 100%;
-  background: var(--white);
-  padding: 48px 24px;
+  background: linear-gradient(180deg, #F4EDE2, #E8DCC8);
+  padding: 60px 24px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  box-shadow: 4px 0 20px rgba(0,0,0,0.1);
-  transition: left 0.3s ease;
+  gap: 24px;
+  box-shadow: 4px 0 30px rgba(0,0,0,0.15);
+  transition: left 0.4s ease;
+  border-right: 1px solid rgba(140,122,101,0.1);
   z-index: 100;
 }
 .mobile-nav.open { left: 0; }
+.mobile-nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 18px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.3s, color 0.3s;
+}
+.mobile-nav a:hover {
+  background: var(--accent);
+  color: var(--white);
+  transform: translateX(5px);
+}
+.mobile-nav a:not(:last-child) { border-bottom: 1px solid rgba(140,122,101,0.2); padding-bottom: 12px; }
+.mobile-nav .nav-footer { margin-top: auto; font-size: 12px; color: var(--muted); text-align: center; }
 
 /* =========================
    Buttons
@@ -115,11 +132,7 @@ body { -ms-overflow-style: none; scrollbar-width: none; }
   cursor: pointer;
 }
 .btn:hover, .btn-nav:hover { transform: translateY(-3px); opacity: 0.9; }
-.btn-outline {
-  border: 1px solid rgba(140,122,101,0.12);
-  background: transparent;
-  color: var(--text);
-}
+.btn-outline { border: 1px solid rgba(140,122,101,0.12); background: transparent; color: var(--text); }
 
 /* =========================
    Hero Section
@@ -180,14 +193,12 @@ body { -ms-overflow-style: none; scrollbar-width: none; }
 /* =========================
    Responsive
    ========================= */
-/* Large tablets / small desktops */
 @media (max-width:1200px) {
   .container { padding: 40px 20px; }
   .grid, .portfolio-grid, .pricing-grid { grid-template-columns: repeat(2,1fr); }
   .hero { gap: 30px; padding: 60px 0; }
-  .nav { gap: 12px; flex-wrap: wrap; }
 }
-/* Tablets / mobile */
+
 @media (max-width:900px) {
   .container { padding: 32px 18px; }
   .grid, .portfolio-grid, .pricing-grid { grid-template-columns: 1fr; }
@@ -197,11 +208,9 @@ body { -ms-overflow-style: none; scrollbar-width: none; }
   .card { padding: 16px; }
   .contact-grid { grid-template-columns: 1fr; }
   .header-inner, .footer-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
-  .nav { display: none; }
-  .burger { display: flex; }
   .btn-nav { width: 100%; text-align: center; }
 }
-/* Small mobile devices */
+
 @media (max-width:500px) {
   .hero { padding: 40px 0; }
   .section { padding: 40px 16px; }
