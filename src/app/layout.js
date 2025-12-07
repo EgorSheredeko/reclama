@@ -1,4 +1,4 @@
-// src/app/layout.js — серверный компонент, без "use client"
+// src/app/layout.js — серверный компонент
 import '../globals.css';
 import Header from '../components/Header';
 
@@ -11,15 +11,26 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ru">
       <body>
-        <Header />
+        <Header /> {/* Header сам будет клиентским */}
         <main>{children}</main>
         <footer className="footer">
-          <div className="container" style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:24,flexWrap:'wrap'}}>
+          <div
+            className="container"
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              gap: 24,
+              flexWrap: 'wrap'
+            }}
+          >
             <div>
-              <div style={{fontWeight:700}}>Mini Sites</div>
-              <div style={{fontSize:13}}>Создание мини-сайтов и лендингов</div>
+              <div style={{ fontWeight: 700 }}>Mini Sites</div>
+              <div style={{ fontSize: 13 }}>Создание мини-сайтов и лендингов</div>
             </div>
-            <div style={{fontSize:13}}>© {new Date().getFullYear()} Mini Sites — Все права защищены</div>
+            <div style={{ fontSize: 13 }}>
+              © {new Date().getFullYear()} Mini Sites — Все права защищены
+            </div>
           </div>
         </footer>
       </body>
