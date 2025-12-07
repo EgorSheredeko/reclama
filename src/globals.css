@@ -1,0 +1,167 @@
+/* =========================
+   Global Styles — pastel beige theme
+   ========================= */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+:root {
+  --bg: #F4EDE2;
+  --bg-2: #E8DCC8;
+  --accent: #C6B9A4;
+  --text: #8C7A65;
+  --muted: #A89582;
+  --white: #FFFFFF;
+  --radius: 14px;
+}
+
+/* Reset & base */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
+}
+
+/* Layout helpers */
+.container { max-width: 1100px; margin: 0 auto; padding: 48px 24px; }
+
+/* =========================
+   Header
+   ========================= */
+.header {
+  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid rgba(140,122,101,0.06);
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 0; }
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: linear-gradient(180deg,#C6B9A4,#E8DCC8);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; color: #fff;
+}
+.logo-text .logo-name { font-weight: 700; }
+.logo-text .logo-slogan { font-size: 12px; color: var(--muted); }
+.nav { display: flex; gap: 18px; align-items: center; }
+.nav a { text-decoration: none; color: var(--text); }
+.btn-nav { padding: 8px 14px; }
+
+/* =========================
+   Buttons
+   ========================= */
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--accent), var(--bg-2));
+  color: var(--white);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(140,122,101,0.08);
+  transition: 0.3s ease;
+  transform: translateY(0);
+  cursor: pointer;
+}
+.btn-outline {
+  border: 1px solid rgba(140,122,101,0.12);
+  background: transparent;
+  color: var(--text);
+}
+.btn:hover, .btn-nav:hover { transform: translateY(-3px); opacity: 0.9; }
+
+/* =========================
+   Hero Section
+   ========================= */
+.hero { display: flex; gap: 40px; align-items: center; padding: 80px 0; }
+.hero-left, .hero-right { flex: 1; }
+.hero-text { max-width: 560px; }
+.hero-title { font-size: 44px; margin: 0; line-height: 1.1; }
+.hero-desc { margin-top: 18px; color: var(--muted); }
+.hero-buttons { display: flex; gap: 12px; margin-top: 22px; }
+.hero-card { width: 100%; max-width: 520px; }
+.hero-img { width: 100%; border-radius: 10px; display: block; }
+
+/* =========================
+   Sections & Grids
+   ========================= */
+.section { padding: 64px 0; }
+.section-title { margin-top: 0; }
+.grid { display: grid; gap: 20px; grid-template-columns: repeat(3,1fr); margin-top: 18px; }
+.card { background: var(--white); border-radius: var(--radius); padding: 20px; box-shadow: 0 8px 30px rgba(140,122,101,0.06); border: 1px solid rgba(140,122,101,0.04); }
+.card-ghost { background: linear-gradient(180deg, rgba(232,220,200,0.45), rgba(244,237,226,0.45)); border-radius: 12px; padding: 18px; min-height: 140px; }
+.text-muted { color: var(--muted); }
+
+/* Portfolio */
+.section-portfolio { background: linear-gradient(180deg, rgba(255,255,255,0), rgba(232,220,200,0.25)); }
+.portfolio-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 18px; }
+.portfolio-img { width: 100%; border-radius: 8px; display: block; }
+
+/* Pricing grid */
+.pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 18px; }
+.price { margin-top: 12px; }
+
+/* Forms (Contact page) */
+.form-label { display: block; margin-top: 12px; font-weight: 600; }
+.form-input { width: 100%; padding: 8px; margin-top: 6px; border-radius: var(--radius); border: 1px solid rgba(140,122,101,0.2); font-family: 'Montserrat', sans-serif; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
+
+/* =========================
+   Footer
+   ========================= */
+.footer { padding: 36px 0; border-top: 1px solid rgba(140,122,101,0.06); margin-top: 48px; color: var(--muted); }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+.footer-name { font-weight: 700; }
+.footer-desc, .footer-right { font-size: 13px; color: var(--muted); }
+
+/* =========================
+   Animations
+   ========================= */
+.reveal { opacity: 0; transform: translateY(40px); transition: all 0.7s ease-out; }
+.reveal.show { opacity: 1; transform: translateY(0); }
+
+/* =========================
+   Responsive
+   ========================= */
+
+/* Large tablets / small desktops */
+@media (max-width:1200px) {
+  .container { padding: 40px 20px; }
+  .grid { grid-template-columns: repeat(2,1fr); }
+  .portfolio-grid { grid-template-columns: repeat(2,1fr); }
+  .pricing-grid { grid-template-columns: repeat(2,1fr); }
+  .hero { gap: 30px; padding: 60px 0; }
+  .nav { gap: 12px; flex-wrap: wrap; }
+}
+
+/* Tablets / mobile */
+@media (max-width:900px) {
+  .container { padding: 32px 18px; }
+  .grid, .portfolio-grid, .pricing-grid { grid-template-columns: 1fr; }
+  .hero { flex-direction: column-reverse; gap: 20px; padding: 50px 0; }
+  .hero-left, .hero-right { width: 100%; }
+  .hero-text { max-width: 100%; }
+  .card { padding: 16px; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .header-inner, .footer-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .nav { flex-direction: column; width: 100%; gap: 10px; }
+  .btn-nav { width: 100%; text-align: center; }
+}
+
+/* Small mobile devices */
+@media (max-width:500px) {
+  .hero { padding: 40px 0; }
+  .section { padding: 40px 16px; }
+  .hero-title { font-size: 32px; }
+  .hero-buttons { flex-direction: column; gap: 10px; }
+  .btn { padding: 8px 16px; font-size: 14px; }
+}
